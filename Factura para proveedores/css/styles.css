@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- CONFIGURACIÓN DE COLORES --- */
+:root {
+    --brand-color: #00AEEF;
+    --brand-dark: #0081c4;
+}
+
+.bg-brand {
+    background-color: var(--brand-color);
+}
+
+.text-brand {
+    color: var(--brand-color);
+}
+
+.input-field {
+    margin-top: 0.25rem;
+    display: block;
+    width: 100%;
+    border-radius: 0.375rem;
+    border-width: 1px;
+    border-color: #d1d5db;
+    padding: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* --- ESTILOS CRÍTICOS PARA MODO IMPRESIÓN/PDF (UNA PÁGINA) --- */
+.print-mode {
+    width: 100% !important;
+    max-width: 760px !important;
+    margin: 0 auto !important;
+    background-color: white !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+/* Ocultar elementos de UI */
+.print-mode .no-print {
+    display: none !important;
+}
+
+/* Mostrar firmas */
+.print-mode #firmas-container {
+    display: grid !important;
+    margin-top: 2rem !important;
+    /* Reducido de 5rem */
+    margin-bottom: 1rem !important;
+}
+
+/* Compactar espacios verticales */
+.print-mode .header-bg {
+    padding: 0.5rem 1rem !important;
+    /* Más compacto */
+}
+
+/* Cabecera más pequeña */
+.print-mode .logo-size {
+    height: 50px !important;
+    /* Reducido de 60px */
+    width: 50px !important;
+}
+
+.print-mode h1 {
+    font-size: 16px !important;
+    /* Reducido de 18px */
+    line-height: 1.1 !important;
+}
+
+.print-mode .p-8 {
+    padding: 1rem !important;
+}
+
+.print-mode .p-6 {
+    padding: 0.75rem !important;
+}
+
+/* Cuerpo más compacto */
+.print-mode .mb-4,
+.print-mode .mb-6,
+.print-mode .mb-8 {
+    margin-bottom: 0.25rem !important;
+    /* Muy compacto */
+}
+
+.print-mode .gap-6 {
+    gap: 0.5rem !important;
+}
+
+.print-mode .gap-10 {
+    gap: 1rem !important;
+}
+
+.print-mode .mt-12 {
+    margin-top: 1.5rem !important;
+}
+
+/* Ajustes de Texto */
+.print-mode input,
+.print-mode textarea,
+.print-mode .pdf-text-content,
+.print-mode label,
+.print-mode span,
+.print-mode div {
+    font-size: 10px !important;
+    /* Letra pequeña base */
+}
+
+.print-mode .text-xl {
+    font-size: 12px !important;
+}
+
+.print-mode .text-2xl,
+.print-mode .text-3xl {
+    font-size: 14px !important;
+}
+
+.print-mode input {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    height: auto !important;
+}
+
+/* Reemplazo visual del textarea */
+.pdf-text-content {
+    white-space: pre-wrap;
+    font-family: inherit;
+    width: 100%;
+    text-align: justify;
+    line-height: 1.2;
+    min-height: 20px;
+}
+
+/* Solución Específica para el Monto superpuesto */
+.print-mode .monto-wrapper-print {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: #00AEEF !important;
+    margin-top: 2px;
+}
+
+/* Ajustar grid de inputs para que no ocupen tanto espacio */
+.print-mode .grid-cols-1 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+/* --- REGLAS NATIVAS DE IMPRESORA --- */
+@media print {
+    @page {
+        margin: 0.25in;
+        size: letter portrait;
+    }
+
+    body {
+        background: white;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        font-size: 10px;
+    }
+
+    #invoice-container {
+        width: 100% !important;
+        max-width: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+    /* Asegurar que las clases de compactación se apliquen también al imprimir directamente */
+    .header-bg {
+        padding: 0.5rem 1rem !important;
+    }
+
+    .logo-size {
+        height: 50px !important;
+        width: 50px !important;
+    }
+
+    h1 {
+        font-size: 16px !important;
+    }
+
+    .mb-4,
+    .mb-6,
+    .mb-8 {
+        margin-bottom: 0.25rem !important;
+    }
+
+    input,
+    textarea,
+    label {
+        font-size: 10px !important;
+    }
+}
